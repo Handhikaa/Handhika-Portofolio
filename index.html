@@ -1,344 +1,336 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handhika Avianto | Digital Marketing Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkgreen: '#112520',
-                        cardgreen: '#1A362F',
-                        accent: '#4ADE80', // Emerald 400
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(to right, #4ADE80, #2DD4BF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
-</head>
-<body class="bg-darkgreen text-gray-100 antialiased selection:bg-accent selection:text-darkgreen">
+import React, { useState } from 'react';
+import { 
+  Briefcase, 
+  Code, 
+  PenTool, 
+  BarChart2, 
+  Cpu, 
+  Megaphone, 
+  Search, 
+  Edit3, 
+  Mail, 
+  ArrowRight,
+  Linkedin,
+  User
+} from 'lucide-react';
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-darkgreen/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-xl tracking-wider">
-                    HANDHIKA<span class="text-accent">.</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-accent transition">About</a>
-                        <a href="#skills" class="hover:text-accent transition">Skills</a>
-                        <a href="#experience" class="hover:text-accent transition">Experience</a>
-                        <a href="#portfolio" class="hover:text-accent transition">Portfolio</a>
-                        <a href="#contact" class="bg-accent text-darkgreen px-4 py-2 rounded-full font-semibold hover:bg-green-300 transition">Let's Talk</a>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
+const App = () => {
+  const [activeTab, setActiveTab] = useState('Semua');
+
+  // --- DATA KEAHLIAN ---
+  const skills = [
+    { icon: <Code size={24} />, title: 'Landing Page Creation', desc: 'Membangun landing page responsif yang dioptimasi untuk konversi tinggi.' },
+    { icon: <PenTool size={24} />, title: 'Design (Sosmed & Ads)', desc: 'Fokus pada desain visual yang simpel, menarik, dan efektif khusus untuk kebutuhan konten Social Media dan materi Paid Ads.' },
+    { icon: <BarChart2 size={24} />, title: 'Data Analytic', desc: 'Menganalisis data performa kampanye untuk menghasilkan insight yang actionable.' },
+    { icon: <Cpu size={24} />, title: 'AI Prompting', desc: 'Memanfaatkan AI untuk riset, copywriting, dan mempercepat alur kerja digital marketing.' },
+    { icon: <Megaphone size={24} />, title: 'Paid Ads', desc: 'Manajemen kampanye iklan berbayar (Meta Ads, Google Ads) dengan fokus pada ROAS dan efisiensi budget.' },
+    { icon: <Search size={24} />, title: 'SEO', desc: 'Optimasi On-page dan Off-page untuk meningkatkan visibilitas organik di mesin pencari.' },
+    { icon: <Edit3 size={24} />, title: 'Content Creation', desc: 'Merencanakan dan memproduksi konten kreatif yang relevan dengan target audiens.' }
+  ];
+
+  // --- DATA PENGALAMAN KERJA ---
+  const experiences = [
+    {
+      period: 'Oct 2023 - Sep 2024',
+      role: 'Digital Marketing Specialist',
+      company: 'Nama Perusahaan Anda',
+      desc: 'Mengelola budget iklan bulanan, mengoptimasi landing page, dan melakukan riset kata kunci untuk strategi SEO jangka panjang.'
+    },
+    {
+      period: 'Sep 2022 - Sep 2023',
+      role: 'Paid Ads & Content Creator',
+      company: 'Perusahaan Sebelumnya',
+      desc: 'Mengeksekusi kampanye Meta Ads dan memproduksi kalender konten bulanan untuk Instagram dan TikTok.'
+    },
+    {
+      period: 'Jan 2022 - Aug 2022',
+      role: 'Intern Digital Marketer',
+      company: 'Agency XYZ',
+      desc: 'Membantu tim inti dalam menyusun laporan analitik dan mendesain materi visual simpel untuk klien.'
+    }
+  ];
+
+  // --- DATA PROJECT ---
+  const projects = [
+    {
+      title: 'Mac Sultan Campaign',
+      category: 'Paid Ads',
+      desc: 'Kampanye promosi produk unggulan menggunakan Meta Ads dan Google Search.',
+      result: 'ROAS meningkat 4.5x, CPL (Cost Per Lead) turun 25% dalam 2 bulan.',
+      imgColor: 'bg-emerald-900/30 text-emerald-400'
+    },
+    {
+      title: 'Mac Save Promo',
+      category: 'Paid Ads',
+      desc: 'Strategi retargeting untuk audiens yang belum melakukan checkout.',
+      result: 'Peningkatan total leads sebesar 30% dan konversi sales naik 15%.',
+      imgColor: 'bg-emerald-900/30 text-emerald-400'
+    },
+    {
+      title: 'Astara Brand Awareness',
+      category: 'Paid Ads',
+      desc: 'Peluncuran brand baru untuk menjangkau target pasar usia 18-25 tahun.',
+      result: 'Mencapai 1 Juta+ Reach dan Brand Awareness naik secara signifikan sebesar 50%.',
+      imgColor: 'bg-emerald-900/30 text-emerald-400'
+    },
+    {
+      title: 'Optimasi Website E-Commerce',
+      category: 'SEO',
+      desc: 'Audit teknikal SEO dan optimasi konten artikel blog.',
+      result: 'Trafik organik naik 120% dalam 6 bulan, 5 keyword masuk Page 1 Google.',
+      imgColor: 'bg-blue-900/30 text-blue-400'
+    },
+    {
+      title: 'Re-design Landing Page XYZ',
+      category: 'Landing Page',
+      desc: 'Merombak UI/UX dan copywriting landing page penjualan.',
+      result: 'Conversion Rate (CVR) meningkat dari 1.2% menjadi 3.5%.',
+      imgColor: 'bg-purple-900/30 text-purple-400'
+    },
+    {
+      title: 'Viral TikTok Series',
+      category: 'Content Creation',
+      desc: 'Membuat konsep dan naskah (dibantu AI Prompting) untuk seri edukasi.',
+      result: 'Total penayangan menembus 500k+ views dengan interaksi tinggi.',
+      imgColor: 'bg-orange-900/30 text-orange-400'
+    }
+  ];
+
+  const projectCategories = ['Semua', 'Paid Ads', 'SEO', 'Landing Page', 'Content Creation'];
+
+  const filteredProjects = activeTab === 'Semua' 
+    ? projects 
+    : projects.filter(p => p.category === activeTab);
+
+  return (
+    <div className="min-h-screen bg-[#0a1512] text-gray-200 font-sans selection:bg-[#5ce198] selection:text-[#0a1512]">
+      
+      {/* NAVBAR */}
+      <nav className="fixed top-0 w-full z-50 bg-[#0a1512]/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+          <span className="font-bold text-xl tracking-wider text-white">HANDHIKA<span className="text-[#5ce198]">.</span></span>
+          
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+            <a href="#about" className="hover:text-white transition-colors">About</a>
+            <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+            <a href="#projects" className="hover:text-white transition-colors">Portfolio</a>
+          </div>
+
+          <a href="#contact" className="bg-[#5ce198] text-[#0a1512] px-6 py-2 rounded-full text-sm font-bold hover:bg-[#4dd389] transition-all transform hover:scale-105">
+            Let's Talk
+          </a>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cardgreen pb-4 px-4">
-            <a href="#about" class="block py-2 hover:text-accent">About</a>
-            <a href="#skills" class="block py-2 hover:text-accent">Skills</a>
-            <a href="#experience" class="block py-2 hover:text-accent">Experience</a>
-            <a href="#portfolio" class="block py-2 hover:text-accent">Portfolio</a>
-            <a href="#contact" class="block py-2 text-accent font-semibold">Contact</a>
-        </div>
-    </nav>
+      </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto min-h-screen flex items-center">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <p class="text-accent font-semibold tracking-wide mb-2 uppercase">Portfolio 2026</p>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Hi, I'm <br><span class="gradient-text">Handhika Avianto</span>
-                </h1>
-                <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-                    Full Stack Digital Marketer & SEO Specialist. I help brands grow through data-driven SEO, high-converting Paid Ads, and engaging Content Creation.
-                </p>
-                <div class="flex gap-4">
-                    <a href="#portfolio" class="bg-accent text-darkgreen px-6 py-3 rounded-full font-bold hover:bg-green-300 transition flex items-center gap-2">
-                        View Projects <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/handhikaavianto/" target="_blank" class="border border-gray-600 px-6 py-3 rounded-full font-bold hover:border-accent hover:text-accent transition flex items-center gap-2">
-                        <i class="fab fa-linkedin text-xl"></i> LinkedIn
-                    </a>
-                </div>
-            </div>
-            <div class="relative hidden md:block">
-                <div class="absolute inset-0 bg-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                <div class="bg-cardgreen border border-white/10 rounded-2xl p-8 relative z-10 text-center">
-                     <div class="w-48 h-48 mx-auto bg-gray-700 rounded-full mb-6 flex items-center justify-center overflow-hidden border-4 border-accent/30">
-                         <!-- Placeholder untuk foto profil -->
-                         <i class="fas fa-user text-6xl text-gray-400"></i>
-                     </div>
-                     <h3 class="text-2xl font-bold">Demography & Civil Registration</h3>
-                     <p class="text-gray-400">Sebelas Maret University • GPA 3.82</p>
-                     <div class="mt-4 flex justify-center gap-2 flex-wrap">
-                         <span class="bg-white/10 px-3 py-1 rounded-full text-xs">RevoU Alum</span>
-                         <span class="bg-white/10 px-3 py-1 rounded-full text-xs">Advanced SEO</span>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      {/* HERO SECTION */}
+      <section id="about" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        {/* Background ambient glow */}
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#5ce198]/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-cardgreen px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Personal <span class="text-accent">Skills</span></h2>
-                <div class="w-20 h-1 bg-accent mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill Category 1 -->
-                <div class="bg-darkgreen p-6 rounded-xl border border-white/5 hover:border-accent/50 transition">
-                    <i class="fas fa-search text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">SEO</h3>
-                    <p class="text-gray-400 text-sm">Ahrefs, Semrush, Screaming Frog, Google Trends, AlsoAsked</p>
-                </div>
-                <!-- Skill Category 2 -->
-                <div class="bg-darkgreen p-6 rounded-xl border border-white/5 hover:border-accent/50 transition">
-                    <i class="fas fa-bullhorn text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Paid Ads</h3>
-                    <p class="text-gray-400 text-sm">Meta Ads, Google Ads (High ROAS & Lead Gen)</p>
-                </div>
-                <!-- Skill Category 3 -->
-                <div class="bg-darkgreen p-6 rounded-xl border border-white/5 hover:border-accent/50 transition">
-                    <i class="fas fa-chart-line text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Analytics</h3>
-                    <p class="text-gray-400 text-sm">Google Analytics 4, Looker Studio, Tag Manager</p>
-                </div>
-                <!-- Skill Category 4 -->
-                <div class="bg-darkgreen p-6 rounded-xl border border-white/5 hover:border-accent/50 transition">
-                    <i class="fas fa-laptop-code text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Landing Page & AI</h3>
-                    <p class="text-gray-400 text-sm">WordPress, Leadpages, Berdu, ChatGPT, Gemini, Canva</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience Section -->
-    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Work <span class="text-accent">Experience</span></h2>
-        <div class="w-20 h-1 bg-accent mx-auto rounded-full mb-16"></div>
-
-        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-600 before:to-transparent">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+          
+          {/* Left Text Content */}
+          <div>
+            <p className="text-[#5ce198] font-bold text-sm tracking-widest mb-4 uppercase">Portfolio 2026</p>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-white">
+              Hi, I'm <br />
+              <span className="text-[#5ce198]">Handhika Avianto</span>
+            </h1>
+            <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg">
+              Full Stack Digital Marketer & SEO Specialist. I help brands grow through data-driven SEO, high-converting Paid Ads, and engaging Content Creation.
+            </p>
             
-            <!-- Item 1 -->
-            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-darkgreen group-[.is-active]:bg-accent text-darkgreen group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardgreen p-6 rounded-xl border border-white/10">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-lg text-accent">Freelance SEO Specialist</h3>
-                        <time class="text-xs text-gray-400">Oct 2025 - Now</time>
-                    </div>
-                    <div class="text-white font-medium mb-2">Greenfields</div>
-                </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#projects" className="inline-flex items-center gap-2 bg-[#5ce198] text-[#0a1512] px-7 py-3 rounded-full font-bold hover:bg-[#4dd389] transition-all">
+                View Projects <ArrowRight size={18} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-7 py-3 rounded-full font-medium hover:bg-white/10 transition-all">
+                <Linkedin size={18} /> LinkedIn
+              </a>
             </div>
+          </div>
 
-            <!-- Item 2 -->
-            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-darkgreen text-gray-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <i class="fas fa-briefcase"></i>
+          {/* Right Profile Card */}
+          <div className="relative flex justify-center md:justify-end mt-12 md:mt-0">
+            <div className="w-full max-w-[440px] bg-[#162621]/90 backdrop-blur-sm border border-white/5 p-10 md:p-12 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center text-center relative z-10">
+              {/* Outer soft glow border for the card to match reference */}
+              <div className="absolute inset-0 rounded-[2rem] border border-[#5ce198]/10 pointer-events-none"></div>
+              
+              {/* Profile Image Placeholder */}
+              <div className="w-36 h-36 rounded-full border-2 border-[#5ce198]/15 bg-[#1e2f2a] mb-8 flex items-center justify-center overflow-hidden relative">
+                <div className="w-32 h-32 rounded-full bg-[#293d38] flex items-center justify-center">
+                  <User size={56} className="text-gray-400" />
                 </div>
-                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardgreen p-6 rounded-xl border border-white/10">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-lg">Freelance Customer Success / E-commerce</h3>
-                        <time class="text-xs text-gray-400">Oct 2024 - Now</time>
-                    </div>
-                    <div class="text-white font-medium mb-2">Itsybitsyspicy</div>
-                    <p class="text-sm text-gray-400">Managed TikTok Shop & Shopee. Maintained 100% 24h response rate. Handled affiliate programs and SEO-friendly listings.</p>
-                </div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-white mb-3">Demography & Civil Registration</h3>
+              <p className="text-gray-400 text-sm mb-10">Sebelas Maret University • GPA 3.82</p>
+              
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="bg-[#1f332c] border border-[#304a40] px-5 py-2 rounded-full text-xs font-medium text-gray-300">RevoU Alum</span>
+                <span className="bg-[#1f332c] border border-[#304a40] px-5 py-2 rounded-full text-xs font-medium text-gray-300">Advanced SEO</span>
+              </div>
             </div>
+          </div>
 
-            <!-- Item 3 -->
-            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-darkgreen text-gray-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardgreen p-6 rounded-xl border border-white/10">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-lg">SEO Specialist</h3>
-                        <time class="text-xs text-gray-400">Oct 2023 - Sep 2024</time>
-                    </div>
-                    <div class="text-white font-medium mb-2">Astra Sedaya Finance (ACC) & Setir Kanan</div>
-                    <p class="text-sm text-gray-400">Increased Setir Kanan impressions by 186% & clicks by 265%. Supervised 13 writers, conducted technical audits, and monitored Google Algorithms.</p>
-                </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-darkgreen text-gray-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardgreen p-6 rounded-xl border border-white/10">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-lg">Freelance Roles</h3>
-                        <time class="text-xs text-gray-400">Jul 2024 & Aug 2024</time>
-                    </div>
-                    <div class="text-white font-medium mb-2">Indigo Auto (SEO) & Mac Sultan (Ads)</div>
-                </div>
-            </div>
-            
         </div>
-    </section>
+      </section>
 
-    <!-- Portfolio Highlights -->
-    <section id="portfolio" class="py-20 bg-cardgreen px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Featured <span class="text-accent">Projects</span></h2>
-            <div class="w-20 h-1 bg-accent mx-auto rounded-full mb-16"></div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Portfolio Card 1: SEO -->
-                <div class="bg-darkgreen rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 transition duration-300">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#1E3A8A] to-[#111827] opacity-80"></div>
-                        <i class="fas fa-chart-line text-5xl text-white/50 z-10"></i>
-                        <div class="absolute bottom-4 left-4 z-10">
-                            <span class="bg-accent text-darkgreen text-xs font-bold px-2 py-1 rounded">SEO</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Setir Kanan & ACC One</h3>
-                        <p class="text-gray-400 text-sm mb-4">Massive organic growth through comprehensive SEO strategy, technical audits, and content supervision.</p>
-                        <ul class="text-sm text-gray-300 space-y-1 mb-4">
-                            <li><i class="fas fa-check text-accent mr-2"></i>+265% Total Clicks</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>+186% Impressions</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>60 Keywords/month handled</li>
-                        </ul>
-                    </div>
+      {/* SKILLS SECTION */}
+      <section id="skills" className="py-20 bg-[#0d1a17] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16 md:text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Personal Skills</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">Keahlian teknis dan strategis yang saya tawarkan untuk memaksimalkan performa digital.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {skills.map((skill, index) => (
+              <div key={index} className="p-8 rounded-3xl bg-[#12241f] border border-white/5 hover:border-[#5ce198]/30 hover:-translate-y-1 transition-all duration-300 group">
+                <div className="w-14 h-14 bg-[#5ce198]/10 rounded-2xl flex items-center justify-center mb-6 text-[#5ce198] group-hover:scale-110 transition-transform">
+                  {skill.icon}
                 </div>
-
-                <!-- Portfolio Card 2: Paid Ads -->
-                <div class="bg-darkgreen rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 transition duration-300">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#065F46] to-[#022C22] opacity-80"></div>
-                        <i class="fas fa-ad text-5xl text-white/50 z-10"></i>
-                        <div class="absolute bottom-4 left-4 z-10">
-                            <span class="bg-accent text-darkgreen text-xs font-bold px-2 py-1 rounded">Meta Ads</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Mac Save & Astara</h3>
-                        <p class="text-gray-400 text-sm mb-4">High-converting Meta Ads campaigns focusing on Lead Generation and Profile Visits with optimized creatives.</p>
-                        <ul class="text-sm text-gray-300 space-y-1 mb-4">
-                            <li><i class="fas fa-check text-accent mr-2"></i>24.5x ROAS (Mac Save)</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>11.4x ROAS (Astara)</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>High CTR & Low CPR</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Portfolio Card 3: Social Media -->
-                <div class="bg-darkgreen rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 transition duration-300">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-black opacity-80"></div>
-                        <i class="fab fa-tiktok text-5xl text-white/50 z-10"></i>
-                        <div class="absolute bottom-4 left-4 z-10">
-                            <span class="bg-accent text-darkgreen text-xs font-bold px-2 py-1 rounded">Social Media</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Personal TikTok Account</h3>
-                        <p class="text-gray-400 text-sm mb-4">Content creation focusing on remote work lifestyle and career growth. Achieved viral reach and high engagement.</p>
-                        <ul class="text-sm text-gray-300 space-y-1 mb-4">
-                            <li><i class="fas fa-check text-accent mr-2"></i>791K+ Total Views</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>39.4% Engagement Rate</li>
-                            <li><i class="fas fa-check text-accent mr-2"></i>54K+ Total Likes</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Portfolio Card 4: Web Analytics & Landing Page -->
-                <div class="bg-darkgreen rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 transition duration-300 lg:col-span-3">
-                    <div class="p-6 md:flex gap-8 items-center">
-                        <div class="md:w-1/3 mb-6 md:mb-0">
-                            <div class="aspect-video bg-cardgreen rounded-lg border border-white/10 flex items-center justify-center">
-                                <i class="fas fa-laptop-code text-4xl text-gray-500"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-2/3">
-                            <span class="bg-accent text-darkgreen text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Web Dev & Analytics</span>
-                            <h3 class="text-xl font-bold mb-2">Landing Pages & Data Visualization</h3>
-                            <p class="text-gray-400 text-sm mb-4">
-                                Developed high-converting landing pages for Catering Masa Depan and Kans product. Connected pages to Meta Pixel, Google Analytics 4, and Google Tag Manager. Created comprehensive Looker Studio dashboards for real-time marketing reporting.
-                            </p>
-                            <div class="flex gap-2 flex-wrap">
-                                <span class="text-xs bg-white/5 px-2 py-1 rounded border border-white/10">WordPress</span>
-                                <span class="text-xs bg-white/5 px-2 py-1 rounded border border-white/10">Looker Studio</span>
-                                <span class="text-xs bg-white/5 px-2 py-1 rounded border border-white/10">GA4</span>
-                                <span class="text-xs bg-white/5 px-2 py-1 rounded border border-white/10">Meta Pixel</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+                <h3 className="font-bold text-xl mb-3 text-white">{skill.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{skill.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">Let's work <br><span class="gradient-text">TOGETHER</span></h2>
-        <p class="text-xl text-gray-400 mb-10">Available for freelance opportunities and full-time roles.</p>
+      {/* WORK EXPERIENCE SECTION */}
+      <section id="experience" className="py-24 bg-[#0a1512]">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center text-white">Work Experience</h2>
+          
+          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[#5ce198]/30 before:to-transparent">
+            {experiences.map((exp, index) => (
+              <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-[3px] border-[#0a1512] bg-[#5ce198] text-[#0a1512] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_15px_rgba(92,225,152,0.4)] z-10">
+                  <Briefcase size={16} strokeWidth={3} />
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-8 rounded-3xl bg-[#12241f] border border-white/5 hover:border-[#5ce198]/20 transition-colors">
+                  <div className="flex flex-col mb-3">
+                    <span className="text-sm font-bold tracking-wider text-[#5ce198] mb-1">{exp.period}</span>
+                    <h3 className="font-bold text-2xl text-white">{exp.role}</h3>
+                  </div>
+                  <div className="text-gray-400 text-sm mb-4 font-medium flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                    {exp.company}
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{exp.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PROJECTS SECTION */}
+      <section id="projects" className="py-24 bg-[#0d1a17] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12 md:text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
+            <p className="text-gray-400">Pilih kategori di bawah untuk melihat portofolio spesifik.</p>
+          </div>
+
+          {/* TABS */}
+          <div className="flex flex-wrap md:justify-center gap-3 mb-12">
+            {projectCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                  activeTab === cat 
+                    ? 'bg-[#5ce198] text-[#0a1512] shadow-[0_0_15px_rgba(92,225,152,0.3)]' 
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* PROJECT GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project, index) => (
+              <div key={index} className="bg-[#12241f] border border-white/5 rounded-3xl overflow-hidden hover:border-[#5ce198]/30 transition-all duration-300 group flex flex-col hover:-translate-y-1">
+                <div className={`h-56 w-full flex items-center justify-center ${project.imgColor} relative overflow-hidden shrink-0`}>
+                  <div className="text-center z-10">
+                    <span className="block font-black opacity-40 uppercase tracking-[0.2em] text-lg">{project.category}</span>
+                    <span className="text-sm opacity-50 font-medium mt-2 block">Project Visual Placeholder</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="text-xs font-bold uppercase text-[#5ce198] mb-3 tracking-wider">{project.category}</div>
+                  <h3 className="font-bold text-2xl mb-4 text-white">{project.title}</h3>
+                  <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">{project.desc}</p>
+                  
+                  <div className="bg-[#0a1512] border border-[#5ce198]/20 p-4 rounded-2xl mt-auto relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-[#5ce198]"></div>
+                    <p className="text-sm text-gray-300">
+                      <span className="block text-[#5ce198] font-bold mb-1 flex items-center gap-2">
+                        <BarChart2 size={16} /> Result:
+                      </span> 
+                      {project.result}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BRANDS COLLABORATION */}
+      <section className="py-20 bg-[#0a1512] border-y border-white/5 overflow-hidden relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[#5ce198]/5 blur-[100px] rounded-full pointer-events-none"></div>
         
-        <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="mailto:handhika2209@gmail.com" class="bg-white/5 border border-white/10 hover:border-accent hover:bg-white/10 px-8 py-4 rounded-full flex items-center justify-center gap-3 transition text-lg">
-                <i class="fas fa-envelope text-accent"></i> handhika2209@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/handhikaavianto/" target="_blank" class="bg-accent text-darkgreen hover:bg-green-400 px-8 py-4 rounded-full flex items-center justify-center gap-3 transition font-bold text-lg">
-                <i class="fab fa-linkedin text-xl"></i> Connect on LinkedIn
-            </a>
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+          <p className="text-sm font-bold text-[#5ce198] uppercase tracking-[0.2em] mb-10">Telah Dipercaya Oleh</p>
+          
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            {/* Ganti dengan logo riil nantinya */}
+            <div className="text-2xl font-black text-white/80">BrandA.</div>
+            <div className="text-2xl font-black text-white/80 italic">CorpLogo</div>
+            <div className="text-2xl font-black text-white/80">STUDIO<span className="text-[#5ce198] font-normal">X</span></div>
+            <div className="text-2xl font-black text-white/80 border-2 border-white/50 px-3 py-1">KLIEN</div>
+            <div className="text-2xl font-black text-white/80 tracking-widest">STARTUP</div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm bg-cardgreen mt-10">
-        <p>&copy; 2026 Handhika Avianto. All rights reserved.</p>
-    </footer>
+      {/* LET'S WORK TOGETHER / CONTACT */}
+      <section id="contact" className="py-32 bg-[#12241f] text-center relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#5ce198]/30 to-transparent"></div>
+        
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
+          <h2 className="text-5xl md:text-6xl font-black mb-6 text-white tracking-tight">Let's Work <span className="text-[#5ce198]">Together</span></h2>
+          <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+            Siap untuk meningkatkan performa digital brand Anda? Mari berdiskusi tentang strategi, eksekusi iklan, pembuatan landing page, hingga pembuatan konten yang menghasilkan konversi.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-5">
+            <a href="mailto:emailanda@domain.com" className="inline-flex justify-center items-center gap-2 bg-[#5ce198] text-[#0a1512] px-8 py-4 rounded-full font-bold hover:bg-[#4dd389] hover:shadow-[0_0_20px_rgba(92,225,152,0.4)] transition-all">
+              <Mail size={20} /> Hubungi via Email
+            </a>
+            <a href="#" className="inline-flex justify-center items-center gap-2 bg-white/5 text-white border border-white/10 px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
+              Download CV / Resume
+            </a>
+          </div>
+        </div>
+      </section>
 
-    <!-- Simple Script for Mobile Menu -->
-    <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+      {/* FOOTER */}
+      <footer className="bg-[#08110e] text-gray-500 text-center py-8 text-sm border-t border-white/5">
+        <p>&copy; {new Date().getFullYear()} Handhika Avianto. All rights reserved.</p>
+      </footer>
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+    </div>
+  );
+};
 
-        // Close menu on click (mobile)
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    </script>
-</body>
-</html>
+export default App;
